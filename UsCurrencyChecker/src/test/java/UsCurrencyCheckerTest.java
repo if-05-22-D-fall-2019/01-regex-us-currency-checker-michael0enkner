@@ -34,6 +34,12 @@ public class UsCurrencyCheckerTest {
     }
 
     @Test
+    public void testOnlyBlankBetween$AndNumber() {
+        Matcher matcher = UsCurrencyChecker.getMatcher("$x149.5");
+        assertThat(matcher.find(), is(false));
+    }
+
+    @Test
     public void testNoDecimals() {
         checkRegex("$ 200");
     }

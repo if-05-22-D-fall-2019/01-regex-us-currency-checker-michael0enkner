@@ -35,7 +35,7 @@ public class UsCurrencyCheckerTest {
 
     @Test
     public void testOnlyBlankBetween$AndNumber() {
-        Matcher matcher = UsCurrencyChecker.getMatcher("$x149.5");
+        Matcher matcher = UsCurrencyChecker.getMatcher("$x14.5");
         assertThat(matcher.find(), is(false));
     }
 

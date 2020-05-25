@@ -1,9 +1,8 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UsCurrencyCheckerTest {
     @Test
@@ -17,15 +16,15 @@ public class UsCurrencyCheckerTest {
 
     private void checkRegex(final String stringToBeChecked, final String expectedMatch) {
         Matcher matcher = UsCurrencyChecker.getMatcher(stringToBeChecked);
-        assertThat(matcher.find(), is(true));
-        assertThat(matcher.group(), is(expectedMatch));
-        assertThat(matcher.find(), is(false));
+        assertTrue(matcher.find());
+        assertEquals(expectedMatch, matcher.group());
+        assertFalse(matcher.find());
     }
 
     @Test
     public void testNoCurrency() {
         Matcher matcher = UsCurrencyChecker.getMatcher("This is text without any currency information");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
     @Test
@@ -36,7 +35,7 @@ public class UsCurrencyCheckerTest {
     @Test
     public void testOnlyBlankBetween$AndNumber() {
         Matcher matcher = UsCurrencyChecker.getMatcher("$x14.5");
-        assertThat(matcher.find(), is(false));
+        assertFalse(matcher.find());
     }
 
     @Test

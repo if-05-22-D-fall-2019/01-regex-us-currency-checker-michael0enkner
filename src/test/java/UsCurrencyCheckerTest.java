@@ -66,4 +66,5 @@ public class UsCurrencyCheckerTest {
     @Test
     public void testCommaInsteadOfPoint() {
         checkRegex("$ 3,14", "$ 3");
-    }}
+    }
+}
